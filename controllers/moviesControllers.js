@@ -3,6 +3,7 @@ const Movie = require('../models/moviesModel');
 
 const createMovie = asyncHandler(async (req, res) => {
   const {
+    backdrop_path,
     original_language,
     original_title,
     overview,
@@ -17,6 +18,7 @@ const createMovie = asyncHandler(async (req, res) => {
   } = req.body;
 
   const data = {
+    backdrop_path,
     original_language,
     original_title,
     overview,

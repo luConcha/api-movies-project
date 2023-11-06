@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const movieSchema = mongoose.Schema({
+  backdrop_path: {
+    type: String,
+  },
   original_language: {
     type: String,
   },
