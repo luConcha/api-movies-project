@@ -15,6 +15,10 @@ const userSchema = mongoose.Schema(
       type: String,
       require: [true, 'Por favor ingrese un password'],
     },
+    role: {
+      type: String,
+      default: 'CUSTOMER',
+    },
   },
   {
     timestamp: true,
