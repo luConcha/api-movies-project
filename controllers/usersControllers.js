@@ -49,11 +49,17 @@ const loginUser = asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ email });
   if (user && (await bcrypt.compare(password, user.password))) {
+    const payloadData = {
+      id: user._id,
+      role: user.role,
+    };
+
     res.status(200).json({
       _id: user._id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
+      token: generateToken(payloadData),
+      role: user.role,
     });
   } else {
     res.status(400);
@@ -65,8 +71,10 @@ const getUser = asyncHandler(async (req, res) => {
   res.status(200).json(req.user);
 });
 
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1hr' });
+const generateToken = (data) => {
+  return jwt.sign(data, process.env.JWT_SECRET, {
+    expiresIn: '1hr',
+  });
 };
 
 module.exports = {
