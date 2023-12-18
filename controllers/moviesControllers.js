@@ -56,8 +56,6 @@ const createMovie = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('No se pudo registrar la pelicula');
   }
-
-  res.status(201).json({ message: 'createMovie' });
 });
 
 const getMovies = asyncHandler(async (req, res) => {

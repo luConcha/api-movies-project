@@ -31,14 +31,15 @@ const movieSchema = mongoose.Schema({
     required: [true, 'Ingrese el titulo de la pelicula'],
   },
   video: {
-    type: Boolean,
-    default: false,
+    type: String,
   },
   vote_average: {
     type: Number,
+    default: 0,
   },
   vote_count: {
     type: Number,
+    default: 0,
   },
   active: {
     type: Boolean,
